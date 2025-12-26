@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI Pipeline - Shell Automation
 
 on:
   push:
@@ -6,12 +6,18 @@ on:
       - main
 
 jobs:
-  build:
+  automation:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run CI Script
-        run: ./app.sh
+      - name: Run Disk Usage Script
+        run: ./scripts/disk_usage.sh
+
+      - name: Run User Check Script
+        run: ./scripts/user_check.sh
+
+      - name: Run System Info Script
+        run: ./scripts/system_info.sh
